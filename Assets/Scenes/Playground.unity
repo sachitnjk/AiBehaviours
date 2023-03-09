@@ -966,6 +966,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: light_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2029126285251152951, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107596153839322399, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
+        type: 3}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9188424778306101725, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
       propertyPath: m_RootOrder
@@ -1052,11 +1062,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   enemy_SpeedWalk: 2
-  enemy_SpeedRun: 4
-  enemy_DetactionRange: 20
+  enemy_SpeedRun: 3
+  enemy_DetactionRange: 10
   enemy_StartWaitTime: 0
   enemy_TimeToRotate: 1
-  enemy_AttackRange: 10
+  enemy_AttackRange: 2
   enemy_Damage: 20
   enemy_ViewRadius: 5
   enemy_GapBetweenDamage: 1

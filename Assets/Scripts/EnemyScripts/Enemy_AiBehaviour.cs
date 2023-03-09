@@ -31,7 +31,7 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	private Transform[] waypoints;
 	private	int enemy_CurrentWaypointIndex;
 
-	//private Vector3 player_LastKnownPos;
+	private Vector3 player_LastKnownPos;
 
 	private bool enemy_CanDamage;
 
@@ -39,7 +39,7 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	{
 		Patrol,
 		Chase,
-		//Searching,
+		Searching,
 		Attack,
 		Dead
 	}
@@ -71,9 +71,9 @@ public class Enemy_AiBehaviour : MonoBehaviour
 			case State.Chase:
 				Chasing();
 				break;
-			//case State.Searching:
-			//	Searching();
-			//	break;
+			case State.Searching:
+				Searching();
+				break;
 			case State.Attack:
 				EnemyAttack(enemy_Damage);
 				break;
@@ -151,21 +151,27 @@ public class Enemy_AiBehaviour : MonoBehaviour
 		{
 			//search state
 			//then do this maybe
-			enemy_CurrentState = State.Patrol;
-			//enemy_CurrentState = State.Searching;
+			//enemy_CurrentState = State.Patrol;
+			enemy_CurrentState = State.Searching;
 		}
 	}
 
-	//private void Searching()
-	//{
-	//	Debug.Log("going to player last pos");
-	//	navMeshAgent.SetDestination(player_LastKnownPos);
-	//	if (Vector3.Distance(transform.position, player_LastKnownPos) <= 0.1f)
-	//	{
-	//		Debug.Log("Searching -> patrol");
-	//		enemy_CurrentState = State.Patrol;
-	//	}
-	//}
+	private void Searching()
+	{
+		player_LastKnownPos = enemy_Target.position;
+
+		Debug.Log("going to player last pos");
+		navMeshAgent.SetDestination(player_LastKnownPos);
+		if (Vector3.Distance(transform.position, player_LastKnownPos) > enemy_DetactionRange )
+		{
+			Debug.Log("Searching -> patrol");
+			enemy_CurrentState = State.Patrol;
+		}
+		else
+		{
+			enemy_CurrentState = State.Chase;
+		}
+	}
 
 	void EnemyAttack(int damage)
 	{
