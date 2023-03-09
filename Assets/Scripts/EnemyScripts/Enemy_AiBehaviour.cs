@@ -31,12 +31,15 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	private Transform[] waypoints;
 	private	int enemy_CurrentWaypointIndex;
 
+	//private Vector3 player_LastKnownPos;
+
 	private bool enemy_CanDamage;
 
 	private enum State
 	{
 		Patrol,
 		Chase,
+		//Searching,
 		Attack,
 		Dead
 	}
@@ -68,6 +71,9 @@ public class Enemy_AiBehaviour : MonoBehaviour
 			case State.Chase:
 				Chasing();
 				break;
+			//case State.Searching:
+			//	Searching();
+			//	break;
 			case State.Attack:
 				EnemyAttack(enemy_Damage);
 				break;
@@ -131,22 +137,35 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	{
 		Vector3 targetPosition = enemy_Target.position;
 		var towardsPlayer = enemy_Target.position - transform.position;
+		//player_LastKnownPos = enemy_Target.position;
 
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(towardsPlayer), Time.deltaTime * enemy_TimeToRotate);
 
 		Move(enemy_SpeedRun);
 		navMeshAgent.SetDestination(targetPosition);
-		if (Vector3.Distance(transform.position, targetPosition) <= 2f)
+		if (Vector3.Distance(transform.position, targetPosition) <= enemy_AttackRange)
 		{
 			enemy_CurrentState = State.Attack;
 		}
-		else if (Vector3.Distance(transform.position, targetPosition) > 5f)
+		else if (Vector3.Distance(transform.position, targetPosition) > enemy_DetactionRange)
 		{
 			//search state
 			//then do this maybe
-			enemy_CurrentState= State.Patrol;
+			enemy_CurrentState = State.Patrol;
+			//enemy_CurrentState = State.Searching;
 		}
 	}
+
+	//private void Searching()
+	//{
+	//	Debug.Log("going to player last pos");
+	//	navMeshAgent.SetDestination(player_LastKnownPos);
+	//	if (Vector3.Distance(transform.position, player_LastKnownPos) <= 0.1f)
+	//	{
+	//		Debug.Log("Searching -> patrol");
+	//		enemy_CurrentState = State.Patrol;
+	//	}
+	//}
 
 	void EnemyAttack(int damage)
 	{
@@ -154,6 +173,9 @@ public class Enemy_AiBehaviour : MonoBehaviour
 		{
 			Debug.Log("I am attacking");
 			//playerHealthBar.TakeDamage(damage);
+			Stop();
+			var towardsPlayer = enemy_Target.position - transform.position;
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(towardsPlayer), Time.deltaTime * enemy_TimeToRotate);
 			StartCoroutine(AiAttacked());
 		}
 	}
@@ -164,9 +186,9 @@ public class Enemy_AiBehaviour : MonoBehaviour
 		yield return new WaitForSeconds(enemy_GapBetweenDamage);
 		enemy_CanDamage = true;
 
-		if (Vector3.Distance(transform.position, enemy_Target.position) > 2f)
+		if (Vector3.Distance(transform.position, enemy_Target.position) > enemy_AttackRange)
 		{
-			Debug.Log("going back to chase after attack");
+			Debug.Log("attack -> chase");
 			enemy_CurrentState = State.Chase;
 		}
 	}
