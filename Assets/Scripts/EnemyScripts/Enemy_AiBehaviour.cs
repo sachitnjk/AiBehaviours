@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class Enemy_AiBehaviour : MonoBehaviour
 {
 	[SerializeField] Transform enemy_Target;
 	[SerializeField] LayerMask playerMask;
+	[SerializeField] LayerMask obstacleMask;
 
 	[SerializeField] private float enemy_SpeedWalk;
 	[SerializeField] private float enemy_SpeedRun;
@@ -120,24 +122,56 @@ public class Enemy_AiBehaviour : MonoBehaviour
 				}
 			}
 
-		Collider[] playerInRange = Physics.OverlapSphere(transform.position, enemy_ViewRadius, playerMask);
+		//Collider[] playerInRange = Physics.OverlapSphere(transform.position, enemy_ViewRadius, playerMask);
 
-		if(playerInRange != null && playerInRange.Length > 0)
+		//if(playerInRange != null && playerInRange.Length > 0)
+		if(DetectPlayer())
 		{
-			enemy_Target = playerInRange[0].transform;
+			Debug.Log("changinmg to chase from patrol");
+			//enemy_Target = playerInRange[0].transform;
 
 			enemy_CurrentState = State.Chase;
 		}
 
 		//make coroutine of this later
+	}
 
+	private bool DetectPlayer()
+	{
+		Collider[] playerInRange = Physics.OverlapSphere(transform.position, enemy_ViewRadius, playerMask);
+
+		if (playerInRange != null && playerInRange.Length > 0)
+		{
+			foreach (Collider player in playerInRange)
+			{
+				Vector3 targetPoint = player.transform.position;
+				targetPoint.y += 1;
+				Vector3 direction = targetPoint - transform.position;
+				float distance = direction.magnitude;
+				direction.Normalize();
+
+				RaycastHit hitInfo;
+
+				if (!Physics.Raycast(transform.position, direction, out hitInfo, distance, obstacleMask))
+				{
+					Debug.Log("Detecting player-raycast");
+
+					enemy_Target = player.transform;
+					return true;
+				}
+				else
+				{
+					Debug.Log(hitInfo.collider.gameObject.name);
+				}
+			}
+		}
+			return false;
 	}
 
 	private void Chasing()
 	{
 		Vector3 targetPosition = enemy_Target.position;
 		var towardsPlayer = enemy_Target.position - transform.position;
-		//player_LastKnownPos = enemy_Target.position;
 
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(towardsPlayer), Time.deltaTime * enemy_TimeToRotate);
 
@@ -149,31 +183,32 @@ public class Enemy_AiBehaviour : MonoBehaviour
 		}
 		else if (Vector3.Distance(transform.position, targetPosition) > enemy_DetactionRange)
 		{
-			//search state
-			//then do this maybe
-			//enemy_CurrentState = State.Patrol;
+			player_LastKnownPos = enemy_Target.position;
+			player_LastKnownPos.y = transform.position.y;  // adjusting target position so that it is close to enemy pos when enmey on it
+
 			enemy_CurrentState = State.Searching;
 		}
 	}
 
 	private void Searching()
 	{
-		player_LastKnownPos = enemy_Target.position;
-
 		Debug.Log("going to player last pos");
 		navMeshAgent.SetDestination(player_LastKnownPos);
 
-		float distanceToPlayer = Vector3.Distance(transform.position, player_LastKnownPos);
+		float distanceToLastKnownPos = Vector3.Distance(transform.position, player_LastKnownPos);
 
-		if (distanceToPlayer <= navMeshAgent.stoppingDistance && distanceToPlayer > enemy_DetactionRange)
+		if (distanceToLastKnownPos <= navMeshAgent.stoppingDistance)
 		{
-			Debug.Log("Searching -> patrol");
-			enemy_CurrentState = State.Patrol;
-		}
-		else
-		{
-			Debug.Log("Searching -> Chase");
-			enemy_CurrentState = State.Chase;
+			if (DetectPlayer())
+			{
+				Debug.Log("Searching -> chase");
+				enemy_CurrentState = State.Chase;
+			}
+			else
+			{
+				Debug.Log("Searching -> patrol");
+				enemy_CurrentState = State.Patrol;
+			}
 		}
 	}
 

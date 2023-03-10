@@ -177,6 +177,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &243009182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1531625861544306320, guid: 6ddc161038fa40f449d85adac58f0571,
+    type: 3}
+  m_PrefabInstance: {fileID: 1872068068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &243009184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243009182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1315c4bb13f007f48ae89b36457ebd42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulse_KnockBackForce: 2
+  impulse_KnockbackRadius: 5
 --- !u!1 &297967375 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 967506975355646713, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
@@ -929,38 +949,6 @@ Transform:
   m_Father: {fileID: 2114283753834967213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1065629043
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1065629044}
-  m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1065629044
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065629043}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.98}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2116066755}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1305087324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,12 +1289,17 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1065629044}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 967506975355646713, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
       propertyPath: m_Name
       value: light_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 967506975355646713, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2029126285251152951, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
@@ -1318,10 +1311,15 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5601261305663411736, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9188424778306101725, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188424778306101725, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
@@ -1336,7 +1334,7 @@ PrefabInstance:
     - target: {fileID: 9188424778306101725, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.48
+      value: 10.46
       objectReference: {fileID: 0}
     - target: {fileID: 9188424778306101725, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
@@ -1375,12 +1373,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 147c1c49b4fff7a4cbc15e898dbe2e10, type: 3}
---- !u!4 &2116066755 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9188424778306101725, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
-    type: 3}
-  m_PrefabInstance: {fileID: 2116066754}
-  m_PrefabAsset: {fileID: 0}
 --- !u!195 &2116066756 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 2029126285251152951, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
@@ -1403,6 +1395,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 256
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 567
   enemy_SpeedWalk: 2
   enemy_SpeedRun: 3
   enemy_DetactionRange: 10
