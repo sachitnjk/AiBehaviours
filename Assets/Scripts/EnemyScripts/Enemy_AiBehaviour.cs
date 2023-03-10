@@ -162,13 +162,17 @@ public class Enemy_AiBehaviour : MonoBehaviour
 
 		Debug.Log("going to player last pos");
 		navMeshAgent.SetDestination(player_LastKnownPos);
-		if (Vector3.Distance(transform.position, player_LastKnownPos) > enemy_DetactionRange )
+
+		float distanceToPlayer = Vector3.Distance(transform.position, player_LastKnownPos);
+
+		if (distanceToPlayer <= navMeshAgent.stoppingDistance && distanceToPlayer > enemy_DetactionRange)
 		{
 			Debug.Log("Searching -> patrol");
 			enemy_CurrentState = State.Patrol;
 		}
 		else
 		{
+			Debug.Log("Searching -> Chase");
 			enemy_CurrentState = State.Chase;
 		}
 	}
