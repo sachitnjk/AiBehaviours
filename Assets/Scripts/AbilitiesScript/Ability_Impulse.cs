@@ -1,27 +1,11 @@
-using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability_Impulse : MonoBehaviour
+public class Ability_Impulse : MonoBehaviour, IAbilityController
 {
-	[SerializeField] float impulse_KnockBackForce;
-	[SerializeField] float impulse_KnockbackRadius;
-
-	StarterAssetsInputs _input;
-
-	private void Start()
-	{
-		_input = GetComponent<StarterAssetsInputs>();
-	}
-
-	private void Update()
-	{
-		if(_input.abilityUse)
-		{
-			AbilityUse();
-		}
-	}
+	float impulse_KnockBackForce = 10;
+	float impulse_KnockbackRadius = 5;
 
 	public void AbilityUse()
 	{

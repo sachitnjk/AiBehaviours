@@ -177,26 +177,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &243009182 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1531625861544306320, guid: 6ddc161038fa40f449d85adac58f0571,
-    type: 3}
-  m_PrefabInstance: {fileID: 1872068068}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &243009184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243009182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1315c4bb13f007f48ae89b36457ebd42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impulse_KnockBackForce: 2
-  impulse_KnockbackRadius: 5
 --- !u!1 &297967375 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 967506975355646713, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
@@ -1309,7 +1289,7 @@ PrefabInstance:
     - target: {fileID: 2107596153839322399, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
       propertyPath: m_Drag
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5601261305663411736, guid: 147c1c49b4fff7a4cbc15e898dbe2e10,
         type: 3}
