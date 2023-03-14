@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ability_Impulse : MonoBehaviour, IAbilityController
@@ -7,10 +5,8 @@ public class Ability_Impulse : MonoBehaviour, IAbilityController
 	float impulse_KnockBackForce = 10;
 	float impulse_KnockbackRadius = 5;
 
-	public void AbilityUse()
+	public void AbilityUse(Vector3 playerPosition)
 	{
-		Vector3 playerPosition = transform.position;
-
 		Collider[] colliders = Physics.OverlapSphere(playerPosition, impulse_KnockbackRadius);
 		foreach(Collider collider in colliders)
 		{

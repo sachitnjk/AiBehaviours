@@ -1,47 +1,40 @@
 using StarterAssets;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
-public class Ability_AttackerDash : MonoBehaviour
+public class Ability_AttackerDash : MonoBehaviour, IAbilityController
 {
-	[SerializeField] float attacker_dashDistance;
-	[SerializeField] float attacker_dashSpeed;
+	private float attacker_dashDistance = 5f;
+	private float attacker_dashSpeed = 2f;
 
 	float traveledDistance = 0f;
 
-	StarterAssetsInputs _input;
 
-	private void Start()
+	public void AbilityUse(Vector3 playerPosition)
 	{
-		_input = GetComponent<StarterAssetsInputs>();
+
+		StartCoroutine(DashCoroutine(playerPosition));
 	}
 
-	private void Update()
+	IEnumerator DashCoroutine(Vector3 playerPosition)
 	{
-		if(_input.abilityUse)
+		Vector3 dashEndPoint = playerPosition + transform.forward * attacker_dashDistance;
+
+		GetComponent<StarterAssetsInputs>().enabled = false;
+
+		float elapsedCoroutineTime = 0f;
+		while(elapsedCoroutineTime < attacker_dashDistance)
 		{
-			AbilityUse();
+			elapsedCoroutineTime += Time.deltaTime;
+			float progress = elapsedCoroutineTime / attacker_dashDistance;
+			Vector3 newPosition = Vector3.Lerp(playerPosition, dashEndPoint, progress);
+			if(Time.deltaTime > 0)
+			{
+				transform.Translate((newPosition - playerPosition).normalized * attacker_dashDistance * attacker_dashSpeed * Time.deltaTime, Space.World);
+			}
+
+			yield return null;
 		}
-	}
-
-	public void AbilityUse()
-	{
-		Debug.Log("Dash is being called");
-		Vector3 dashDirection = transform.forward;
-		Vector3 forwardCamera = Camera.main.transform.forward;
-
-		//removing y component from camera
-		forwardCamera.y = 0f;
-		forwardCamera.Normalize();
-
-		if(traveledDistance < attacker_dashDistance)
-		{
-			float distancePerFrame = attacker_dashSpeed * Time.deltaTime;
-			transform.position += forwardCamera * distancePerFrame;
-			traveledDistance += distancePerFrame;
-		}
-
+		GetComponent<StarterAssetsInputs>().enabled = true;
 	}
 }

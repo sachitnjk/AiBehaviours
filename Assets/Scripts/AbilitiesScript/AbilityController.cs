@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IAbilityController
 {
-	void AbilityUse();
+	void AbilityUse(Vector3 playerPosition);
 }
 
 public class AbilityController : MonoBehaviour
@@ -16,13 +16,13 @@ public class AbilityController : MonoBehaviour
 	{
 		_input = GetComponent<StarterAssetsInputs>();
 
-		if(transform.root.gameObject.name == "PlayerImpulse-Char")
+		if(transform.gameObject.name == "PlayerImpulse-Char")
 		{
 			SetActiveAbility(new Ability_Impulse());
 		}
-		else
+		else if (transform.gameObject.name == "PlayerAttacker-Char")
 		{
-			SetActiveAbility(new Ability_Impulse());
+			SetActiveAbility(new Ability_AttackerDash());
 		}
 	}
 
@@ -35,7 +35,8 @@ public class AbilityController : MonoBehaviour
 	{
 		if(_input.abilityUse)
 		{
-			activeAbility.AbilityUse();
+			Vector3 playerPosition = transform.position;
+			activeAbility.AbilityUse(playerPosition);
 		}
 	}
 }

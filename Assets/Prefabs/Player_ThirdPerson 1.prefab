@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8546101620448260392}
   m_Layer: 0
-  m_Name: Player_ThirdPerson
+  m_Name: Player_ThirdPerson 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ PrefabInstance:
     - target: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_Name
-      value: PlayerImpulse-Char
+      value: PlayerAttacker-Char
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
