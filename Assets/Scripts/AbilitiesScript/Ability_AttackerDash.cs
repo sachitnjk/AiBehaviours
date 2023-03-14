@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class Ability_AttackerDash : MonoBehaviour, IAbilityController
 {
-	private float attacker_dashDistance = 5f;
-	private float attacker_dashSpeed = 2f;
+	private float attacker_dashDistance = 1f;
+	private float attacker_dashSpeed = 1f;
 
-	float traveledDistance = 0f;
+	StarterAssetsInputs _input;
+
+	private void Start()
+	{
+		_input = GetComponent<StarterAssetsInputs>();
+	}
+
+	private void Update()
+	{
+		if (_input.abilityUse)
+		{
+			Vector3 playerPosition = transform.position;
+			AbilityUse(playerPosition);
+		}
+	}
 
 
 	public void AbilityUse(Vector3 playerPosition)
