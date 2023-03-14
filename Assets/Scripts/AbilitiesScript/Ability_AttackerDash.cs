@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Ability_AttackerDash : MonoBehaviour, IAbilityController
 {
-	private float attacker_dashDistance = 1f;
-	private float attacker_dashSpeed = 1f;
+	[SerializeField] private float attacker_dashDistance = 1f;
+	[SerializeField] private float attacker_dashSpeed = 10f;
 
 	StarterAssetsInputs _input;
 
