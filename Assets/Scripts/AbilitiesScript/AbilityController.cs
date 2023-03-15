@@ -18,11 +18,13 @@ public class AbilityController : MonoBehaviour
 
 		if(transform.gameObject.name == "PlayerImpulse-Char")
 		{
-			SetActiveAbility(new Ability_Impulse());
+			Ability_Impulse abilityImpulse = gameObject.AddComponent<Ability_Impulse>();
+			SetActiveAbility(abilityImpulse);
 		}
 		else if (transform.gameObject.name == "PlayerAttacker-Char")
 		{
-			SetActiveAbility(new Ability_AttackerDash());
+			Ability_AttackerDash attackerDash = gameObject.AddComponent<Ability_AttackerDash>();
+			SetActiveAbility(attackerDash);
 		}
 	}
 

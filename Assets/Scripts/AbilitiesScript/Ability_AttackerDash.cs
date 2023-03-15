@@ -7,21 +7,21 @@ public class Ability_AttackerDash : MonoBehaviour, IAbilityController
 	[SerializeField] private float attacker_dashDistance = 1f;
 	[SerializeField] private float attacker_dashSpeed = 10f;
 
-	StarterAssetsInputs _input;
+	//StarterAssetsInputs _input;
 
-	private void Start()
-	{
-		_input = GetComponent<StarterAssetsInputs>();
-	}
+	//private void Start()
+	//{
+	//	_input = GetComponent<StarterAssetsInputs>();
+	//}
 
-	private void Update()
-	{
-		if (_input.abilityUse)
-		{
-			Vector3 playerPosition = transform.position;
-			AbilityUse(playerPosition);
-		}
-	}
+	//private void Update()
+	//{
+	//	if (_input.abilityUse)
+	//	{
+	//		Vector3 playerPosition = transform.position;
+	//		AbilityUse(playerPosition);
+	//	}
+	//}
 
 
 	public void AbilityUse(Vector3 playerPosition)
