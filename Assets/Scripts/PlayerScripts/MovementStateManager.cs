@@ -62,4 +62,10 @@ public class MovementStateManager : MonoBehaviour
 
 		_characterController.Move(velocity * Time.deltaTime);
 	}
+
+	//private void OnDrawGizmos()
+	//{
+	//	Gizmos.color = Color.red;
+	//	Gizmos.DrawSphere(spherePos, _characterController.radius - 0.05f);
+	//}
 }
