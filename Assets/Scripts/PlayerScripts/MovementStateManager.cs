@@ -8,10 +8,9 @@ public class MovementStateManager : MonoBehaviour
 	float horizontal_Input, vertical_Input;
 
 	[SerializeField] float groundYOffset;
+	[SerializeField] float gravity = 9.81f;
 	[SerializeField] LayerMask groundLayerMask;
 	Vector3 spherePos;
-
-	[SerializeField] float gravity = 9.81f;
 	Vector3 velocity;
 
 	CharacterController _characterController;
