@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,7 +30,7 @@ public class Enemy_AiBehaviour : MonoBehaviour
 
 	private State enemy_CurrentState;
 
-	public Enemy_AiWaypoints waypointsScript;
+	//public Enemy_AiWaypoints waypointsScript;
 	private Transform[] waypoints;
 	private	int enemy_CurrentWaypointIndex;
 
@@ -50,7 +51,13 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	{
 		enemy_CanDamage = true;
 
-		waypoints = waypointsScript.waypoints;
+		//waypoints = waypointsScript.waypoints;
+		Transform waypointsParent = GameObject.Find("Waypoints").transform;
+		waypoints = new Transform[waypointsParent.childCount];
+		for (int i = 0; i < waypointsParent.childCount; i++)
+		{
+			waypoints[i] = waypointsParent.GetChild(i);
+		}
 
 		enemy_CurrentWaypointIndex = 0;
 		navMeshAgent = GetComponent<NavMeshAgent>();
@@ -122,14 +129,9 @@ public class Enemy_AiBehaviour : MonoBehaviour
 				}
 			}
 
-		//Collider[] playerInRange = Physics.OverlapSphere(transform.position, enemy_ViewRadius, playerMask);
-
-		//if(playerInRange != null && playerInRange.Length > 0)
 		if(DetectPlayer())
 		{
 			Debug.Log("changinmg to chase from patrol");
-			//enemy_Target = playerInRange[0].transform;
-
 			enemy_CurrentState = State.Chase;
 		}
 
