@@ -7,23 +7,6 @@ public class Ability_AttackerDash : MonoBehaviour, IAbilityController
 	[SerializeField] private float attacker_dashDistance = 1f;
 	[SerializeField] private float attacker_dashSpeed = 10f;
 
-	//StarterAssetsInputs _input;
-
-	//private void Start()
-	//{
-	//	_input = GetComponent<StarterAssetsInputs>();
-	//}
-
-	//private void Update()
-	//{
-	//	if (_input.abilityUse)
-	//	{
-	//		Vector3 playerPosition = transform.position;
-	//		AbilityUse(playerPosition);
-	//	}
-	//}
-
-
 	public void AbilityUse(Vector3 playerPosition)
 	{
 
@@ -36,11 +19,11 @@ public class Ability_AttackerDash : MonoBehaviour, IAbilityController
 
 		GetComponent<StarterAssetsInputs>().enabled = false;
 
-		float elapsedCoroutineTime = 0f;
+		float elapsedCoroutineTime = .8f;
 		while(elapsedCoroutineTime < attacker_dashDistance)
 		{
 			elapsedCoroutineTime += Time.deltaTime;
-			float progress = elapsedCoroutineTime / attacker_dashDistance;
+			float progress = elapsedCoroutineTime / (attacker_dashDistance/10);
 			Vector3 newPosition = Vector3.Lerp(playerPosition, dashEndPoint, progress);
 			if(Time.deltaTime > 0)
 			{
