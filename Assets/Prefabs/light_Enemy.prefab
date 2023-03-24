@@ -169,6 +169,7 @@ MonoBehaviour:
   enemy_ViewRadius: 5
   enemy_GapBetweenDamage: 1
   navMeshAgent: {fileID: 2029126285251152951}
+  _animator: {fileID: 0}
 --- !u!1 &5601261305663411736
 GameObject:
   m_ObjectHideFlags: 0

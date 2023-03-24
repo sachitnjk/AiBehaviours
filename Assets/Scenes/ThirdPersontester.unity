@@ -470,6 +470,11 @@ PrefabInstance:
       objectReference: {fileID: 468811412}
     - target: {fileID: 4147452150865352099, guid: af47eda9146dbdf45bcde4fb1bca8615,
         type: 3}
+      propertyPath: cm_AimVirtualCamera
+      value: 
+      objectReference: {fileID: 1697221276}
+    - target: {fileID: 4147452150865352099, guid: af47eda9146dbdf45bcde4fb1bca8615,
+        type: 3}
       propertyPath: pf_BulletProjectile
       value: 
       objectReference: {fileID: 8694930176604648209, guid: a3a169070fe774445b81e9b9a4a3771f,
@@ -503,6 +508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_ThirdPerson_Atk
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991767321876009026, guid: af47eda9146dbdf45bcde4fb1bca8615,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8546101620448260392, guid: af47eda9146dbdf45bcde4fb1bca8615,
         type: 3}
@@ -759,6 +769,18 @@ Transform:
   m_Father: {fileID: 112075766}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1697221276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3504765374004896750, guid: af47eda9146dbdf45bcde4fb1bca8615,
+    type: 3}
+  m_PrefabInstance: {fileID: 1019938943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1949988143
 PrefabInstance:
   m_ObjectHideFlags: 0
