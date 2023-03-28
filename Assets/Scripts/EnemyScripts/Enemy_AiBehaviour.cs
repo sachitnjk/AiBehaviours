@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +14,12 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	[SerializeField] private float enemy_DetactionRange;
 	[SerializeField] private float enemy_StartWaitTime;
 	[SerializeField] private float enemy_TimeToRotate;
+	
+	private	int enemy_CurrentWaypointIndex;
+	private bool enemy_CanDamage;
+	private GameObject enemy_Leader;
+	
+	private Vector3 player_LastKnownPos;
 
 	float waitTime;
 	float timeToRotate;
@@ -31,13 +34,7 @@ public class Enemy_AiBehaviour : MonoBehaviour
 
 	private State enemy_CurrentState;
 
-	//public Enemy_AiWaypoints waypointsScript;
 	private Transform[] waypoints;
-	private	int enemy_CurrentWaypointIndex;
-
-	private Vector3 player_LastKnownPos;
-
-	private bool enemy_CanDamage;
 
 	private enum State
 	{
@@ -52,8 +49,7 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	{
 		enemy_CanDamage = true;
 
-		//waypoints = waypointsScript.waypoints;
-		Transform waypointsParent = GameObject.Find("Waypoints").transform;
+		Transform waypointsParent = ReferenceManager.instance.waypointsParent;
 		waypoints = new Transform[waypointsParent.childCount];
 		for (int i = 0; i < waypointsParent.childCount; i++)
 		{
@@ -110,6 +106,11 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	{
 		navMeshAgent.isStopped = true;
 		navMeshAgent.speed = 0;
+	}
+
+	public void SetLeader(GameObject newLeader)
+	{
+		enemy_Leader = newLeader;
 	}
 
 	private void Patrol()
@@ -192,7 +193,7 @@ public class Enemy_AiBehaviour : MonoBehaviour
 		else if (Vector3.Distance(transform.position, targetPosition) > enemy_DetactionRange)
 		{
 			player_LastKnownPos = enemy_Target.position;
-			player_LastKnownPos.y = transform.position.y;  // adjusting target position so that it is close to enemy pos when enmey on it
+			player_LastKnownPos.y = transform.position.y;
 
 			enemy_CurrentState = State.Searching;
 		}
