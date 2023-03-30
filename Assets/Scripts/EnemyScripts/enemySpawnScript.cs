@@ -22,12 +22,6 @@ public class enemySpawnScript : MonoBehaviour
 
 			NavMeshAgent e_NavMeshAgent = e_Instance.GetComponent<NavMeshAgent>();
 			e_NavMeshAgent.SetDestination(waypointsScript.waypoints[0].position);
-
-			if (i == 0)
-			{
-				Enemy_AiBehaviour e_Leader = e_Instance.GetComponent<Enemy_AiBehaviour>();
-				e_Leader.SetLeader(gameObject);
-			}
 		}
 	}
 }

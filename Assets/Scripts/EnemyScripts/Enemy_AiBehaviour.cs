@@ -17,7 +17,6 @@ public class Enemy_AiBehaviour : MonoBehaviour
 	
 	private	int enemy_CurrentWaypointIndex;
 	private bool enemy_CanDamage;
-	private GameObject enemy_Leader;
 	
 	private Vector3 player_LastKnownPos;
 
@@ -108,10 +107,6 @@ public class Enemy_AiBehaviour : MonoBehaviour
 		navMeshAgent.speed = 0;
 	}
 
-	public void SetLeader(GameObject newLeader)
-	{
-		enemy_Leader = newLeader;
-	}
 
 	private void Patrol()
 	{
