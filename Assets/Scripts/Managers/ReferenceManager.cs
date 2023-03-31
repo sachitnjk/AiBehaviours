@@ -7,6 +7,9 @@ public class ReferenceManager : MonoBehaviour
 	public static ReferenceManager instance;
 
 	[SerializeField] public Transform waypointsParent;
+	[SerializeField] public StaminaBar staminaSlider;
+	[SerializeField] public HealthBar healthBarSlider;
+	[SerializeField] public KillCounter killCountSlider;
 
 	private void Awake()
 	{
