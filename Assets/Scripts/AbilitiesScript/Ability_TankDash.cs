@@ -54,4 +54,3 @@ public class Ability_TankDash : MonoBehaviour, IAbilityController
 		}
 	}
 }
-}
