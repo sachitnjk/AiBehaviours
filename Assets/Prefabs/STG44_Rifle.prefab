@@ -882,6 +882,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2075995119812591470}
+  - component: {fileID: 6930170058664617490}
+  - component: {fileID: 7532467085300578290}
+  - component: {fileID: 5662133658665239043}
   m_Layer: 0
   m_Name: STG44_Rifle
   m_TagString: Untagged
@@ -906,6 +909,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!895512359 &6930170058664617490
+AimConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951950121524498857}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 180, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AimVector: {x: 0, y: 0, z: 1}
+  m_UpVector: {x: 0, y: 1, z: 0}
+  m_WorldUpVector: {x: 0, y: 1, z: 0}
+  m_WorldUpObject: {fileID: 0}
+  m_UpType: 0
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []
+--- !u!1818360608 &7532467085300578290
+PositionConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951950121524498857}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []
+--- !u!1773428102 &5662133658665239043
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951950121524498857}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationAtRest: {x: 0, y: 180, z: 0}
+  m_TranslationOffsets: []
+  m_RotationOffsets: []
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []
 --- !u!1 &7140890630386928647
 GameObject:
   m_ObjectHideFlags: 0

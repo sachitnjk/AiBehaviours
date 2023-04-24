@@ -9,10 +9,15 @@ public class IKController : MonoBehaviour
 
 	Animator anim;
 
-	[Header("Rightj hand IK")]
+	[Header("Right hand IK")]
 	[Range(0, 1)] public float rightHandWeight;
 	public Transform rightHandObject = null;
-	public Transform rightHandHint = null; 
+	public Transform rightHandHint = null;
+
+	[Header("Left hand IK")]
+	[Range(0, 1)] public float leftHandWeight;
+	public Transform leftHandObject = null;
+	public Transform leftHandHint = null;
 
 	private void Awake()
 	{
@@ -28,6 +33,8 @@ public class IKController : MonoBehaviour
 	{
 		if(anim)
 		{
+			//------Right
+
 			if(rightHandObject != null)
 			{
 				anim.SetIKPositionWeight(AvatarIKGoal.RightHand, rightHandWeight);
@@ -40,6 +47,23 @@ public class IKController : MonoBehaviour
 			{
 				anim.SetIKHintPositionWeight(AvatarIKHint.RightElbow, 1);
 				anim.SetIKHintPosition(AvatarIKHint.RightElbow, rightHandHint.position);
+			}
+
+			//------Left
+
+			if (leftHandObject != null)
+			{
+				anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, leftHandWeight);
+				anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, leftHandWeight);
+				anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObject.position);
+				anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObject.rotation);
+			}
+
+
+			if (leftHandHint != null)
+			{
+				anim.SetIKHintPositionWeight(AvatarIKHint.LeftElbow, 1);
+				anim.SetIKHintPosition(AvatarIKHint.LeftElbow, leftHandHint.position);
 			}
 		}
 	}
