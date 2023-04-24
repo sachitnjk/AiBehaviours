@@ -14,7 +14,8 @@ public class ThirdPersonShooter : MonoBehaviour
 	[SerializeField] private float aimSensitivity;
 	[SerializeField] private LayerMask aimColliderLayerMask;
 	[SerializeField] private Transform pf_BulletProjectile;	
-	[SerializeField] private Transform bulletSpawnPoint;	
+	[SerializeField] private Transform bulletSpawnPoint;
+	[SerializeField] private GameObject aimGameObject;
 
 	private ThirdPersonController _TPcontroller;
 	private StarterAssetsInputs _input;
@@ -79,6 +80,8 @@ public class ThirdPersonShooter : MonoBehaviour
 			Vector3 worldAimTarget = mouseWorldPosition;
 			worldAimTarget.y = transform.position.y;
 			Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+
+			aimGameObject.transform.position = mouseWorldPosition;
 
 			transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
 		}

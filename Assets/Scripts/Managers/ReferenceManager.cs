@@ -11,6 +11,8 @@ public class ReferenceManager : MonoBehaviour
 	[SerializeField] public HealthBar healthBarSlider;
 	[SerializeField] public KillCounter killCountSlider;
 
+	[SerializeField] public GameObject inventoryPanel;
+
 	private void Awake()
 	{
 		if (instance == null)

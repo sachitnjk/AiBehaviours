@@ -15,6 +15,8 @@ namespace StarterAssets
 		public bool abilityUse;
 		public bool aim;
 		public bool shoot;
+		public InputAction _InvetoryOpenClose;
+		private PlayerInput _playerInput;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -22,6 +24,13 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+
+		private void Start()
+		{
+			_playerInput = GetComponent<PlayerInput>();
+			_InvetoryOpenClose = _playerInput.actions["Inventory"];
+		}
+
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
