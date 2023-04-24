@@ -35,6 +35,12 @@ public class IKController : MonoBehaviour
 				anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandObject.position);
 				anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandObject.rotation);
 			}
+
+			if(rightHandHint != null)
+			{
+				anim.SetIKHintPositionWeight(AvatarIKHint.RightElbow, 1);
+				anim.SetIKHintPosition(AvatarIKHint.RightElbow, rightHandHint.position);
+			}
 		}
 	}
 }
