@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 063aa479676c4084ebf187660ca0a7b8
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -2702400367771620057
@@ -17,21 +17,17 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'Left_UpperLeg'
-      : position error = 3.626586 mm\n\t'Left_Foot' : position error = 12.542060
-      mm\n\t'Left_Toes' : position error = 30.265436 mm\n\t'Right_UpperLeg' : position
-      error = 3.626659 mm\n\t'Right_Foot' : position error = 12.543159 mm\n\t'Right_Toes'
-      : position error = 30.260939 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.25
     animationPositionError: 0.05
     animationScaleError: 0.05
@@ -80,6 +76,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -91,6 +88,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -539,23 +537,23 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Mannequin(Clone)
+    - name: Armature(Clone)
       parentName: 
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Geometry
-      parentName: Mannequin(Clone)
+      parentName: Armature(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Mannequin_Mesh
+    - name: Armature_Mesh
       parentName: Geometry
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Skeleton
-      parentName: Mannequin(Clone)
+      parentName: Armature(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -862,7 +860,7 @@ ModelImporter:
     - name: Right_RingProximal
       parentName: Right_Hand
       position: {x: -0.00952738, y: -0.08161427, z: 0.012242128}
-      rotation: {x: -0.017649079, y: -0.6027014, z: -0.0040535578, w: 0.7977614}
+      rotation: {x: -0.017649077, y: -0.6027014, z: -0.0040535573, w: 0.7977614}
       scale: {x: 1, y: 1, z: 1}
     - name: Right_RingIntermediate
       parentName: Right_RingProximal
@@ -918,6 +916,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -50,6 +50,19 @@ public class ThirdPersonShooter : MonoBehaviour
 			cm_AimVirtualCamera.gameObject.SetActive(true);
 			_TPcontroller.SetSensitivity(aimSensitivity);
 			_TPcontroller.SetRotateOnMove(false);
+
+			if(_TPcontroller.targetSpeed == _TPcontroller.MoveSpeed) 
+			{
+				animator.Play("RifleAimingWalk", 1);
+			}
+			else if (_TPcontroller.targetSpeed == _TPcontroller.SprintSpeed)
+			{
+				animator.Play("RifleAimingRun", 1);
+			}
+			else if(_TPcontroller.targetSpeed <= 0f)
+			{
+				animator.Play("RifleAimingIdle", 1);
+			}
 			animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
 
 			Vector3 worldAimTarget = mouseWorldPosition;
