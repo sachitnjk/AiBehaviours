@@ -157,6 +157,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  targetSpeed: 0
 --- !u!114 &8764289389160139872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +621,7 @@ PrefabInstance:
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.7624941
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
@@ -630,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 18.213118
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
@@ -1031,6 +1032,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: STG44_Rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_Weight
+      value: 0.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_IsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_RotationAtRest.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_RotationAtRest.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_RotationAtRest.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_RotationOffset.x
+      value: 0.00451646
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_RotationOffset.y
+      value: -89.73939
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_RotationOffset.z
+      value: -90.52355
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_IsContraintActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_Sources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_Sources.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775336304143037872, guid: 74b52bcfb03ffb7498afaa3869fb1cb0,
+        type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 8099558360211909419}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74b52bcfb03ffb7498afaa3869fb1cb0, type: 3}
 --- !u!4 &4755399282243312848 stripped
